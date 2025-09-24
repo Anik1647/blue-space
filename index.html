@@ -177,6 +177,54 @@
             color: #00bcd4;
         }
 
+        .dark-mode .download-card-btn {
+            background: linear-gradient(135deg, #00bcd4, #0097a7);
+        }
+
+        .dark-mode .leader-description {
+            color: #ccc;
+        }
+
+        /* Interactive Address Styles */
+        .address-interactive {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 10px;
+            border-radius: 8px;
+            margin: -10px;
+        }
+
+        .address-interactive:hover {
+            background: rgba(0, 188, 212, 0.1);
+            transform: translateX(5px);
+        }
+
+        .get-directions-btn {
+            background: linear-gradient(135deg, #00bcd4, #0097a7);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            text-decoration: none;
+        }
+
+        .get-directions-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
+        }
+
+        .dark-mode .address-interactive:hover {
+            background: rgba(0, 188, 212, 0.2);
+        }
+
         /* Hero Section */
         .hero {
             height: 100vh;
@@ -505,6 +553,32 @@
             font-size: 1.1rem;
         }
 
+        .download-card-btn {
+            background: linear-gradient(135deg, #00bcd4, #0097a7);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 1.5rem;
+            text-decoration: none;
+        }
+
+        .download-card-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+        }
+
+        .download-card-btn:active {
+            transform: translateY(0);
+        }
+
         /* Contact Section */
         .contact {
             padding: 100px 0;
@@ -819,6 +893,10 @@
                         <p class="leader-description">
                             Under the dynamic leadership of Ankit Yadav, Blue Space Engineering has established itself as a premier name in tower construction and MEP services. As our Director, CEO, and Chief Engineer, Ankit brings extensive expertise in engineering solutions and project management. His vision and technical acumen have driven the company's commitment to excellence, innovation, and client satisfaction in every project we undertake.
                         </p>
+                        <a href="business-card.html" target="_blank" class="download-card-btn">
+                            <span>📄</span>
+                            Download Visiting Card
+                        </a>
                     </div>
                 </div>
             </div>
@@ -841,7 +919,13 @@
                         <div class="contact-icon">📍</div>
                         <div class="contact-text">
                             <h4>Address</h4>
-                            <p>Gala No 36, Opp Tropical New Era Business Park,<br>Waghale Estate Thane West,<br>Kamgar Hospital Road, Thane West-400606</p>
+                            <div class="address-interactive" onclick="openMaps()" title="Click to open in maps">
+                                <p>Gala No 36, Opp Tropical New Era Business Park,<br>Waghale Estate Thane West,<br>Kamgar Hospital Road, Thane West-400606</p>
+                            </div>
+                            <a href="https://maps.google.com/?q=Gala+No+36,+Opp+Tropical+New+Era+Business+Park,+Waghale+Estate+Thane+West,+Kamgar+Hospital+Road,+Thane+West-400606" target="_blank" class="get-directions-btn">
+                                <span>🗺️</span>
+                                Get Directions
+                            </a>
                         </div>
                     </div>
 
@@ -1057,6 +1141,26 @@
                 localStorage.setItem('theme', 'light');
             }
         });
+
+        // Map Navigation Function
+        function openMaps() {
+            const address = "Gala No 36, Opp Tropical New Era Business Park, Waghale Estate Thane West, Kamgar Hospital Road, Thane West-400606";
+            const encodedAddress = encodeURIComponent(address);
+            
+            // Try to detect user's device and open appropriate map app
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            if (/android/i.test(userAgent)) {
+                // Android - try Google Maps app first, fallback to web
+                window.open(`geo:0,0?q=${encodedAddress}`, '_blank');
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                // iOS - try Apple Maps first, fallback to Google Maps web
+                window.open(`maps://maps.google.com/maps?q=${encodedAddress}`, '_blank');
+            } else {
+                // Desktop/Web - open Google Maps in browser
+                window.open(`https://maps.google.com/?q=${encodedAddress}`, '_blank');
+            }
+        }
     </script>
 </body>
 </html>

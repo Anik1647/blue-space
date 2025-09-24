@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankit Yadav - Business Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .business-card {
+            width: 350px;
+            height: 200px;
+            background: linear-gradient(135deg, #003366 0%, #006699 100%);
+            border-radius: 15px;
+            padding: 20px;
+            color: white;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .business-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: rgba(0, 188, 212, 0.1);
+            border-radius: 50%;
+        }
+        .card-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .company-name {
+            font-size: 14px;
+            font-weight: bold;
+            color: #00bcd4;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .title {
+            font-size: 12px;
+            color: #00bcd4;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .contact-info {
+            font-size: 11px;
+            line-height: 1.4;
+        }
+        .contact-info div {
+            margin-bottom: 3px;
+        }
+        .print-instructions {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .print-instructions {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="business-card">
+        <div class="card-content">
+            <div>
+                <div class="company-name">Blue Space Engineering</div>
+                <div class="name">Ankit Yadav</div>
+                <div class="title">Director • CEO • Chief Engineer</div>
+            </div>
+            <div class="contact-info">
+                <div>📞 +91 9839571710 • +91 9892450907</div>
+                <div>📧 bluespaceeng@gmail.com</div>
+                <div>📍 Gala No 36, Opp Tropical New Era Business Park</div>
+                <div>   Waghale Estate, Thane West-400606</div>
+                <div>🏢 Tower Construction & MEP Services</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="print-instructions">
+        <p>Print this page to create a physical business card<br>
+        Recommended: Print on cardstock paper, A4 size</p>
+    </div>
+
+    <script>
+        // Auto-print when page loads (optional)
+        // window.onload = function() { window.print(); }
+    </script>
+</body>
+</html>
